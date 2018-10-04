@@ -157,22 +157,15 @@
 #pragma mark - Paddle Helper Methods
 
 - (void)validSupportContractAvailableForProduct:(NSString *)identifier reply:(void (^)(BOOL, NSDictionary *))reply {
-    // Perform an offline check if a local license is available.
-    // TODO: Implement remote verification - maybe also not in here but instead in the GPG Suite Updater.
-    //       We'll have to look into that.
-    PADProduct *product = [self paddleProduct];
-    Paddle *paddle = [self paddleInstance];
-    
+    // Gents - this is not the way to solve it. Imagine wikipedia, stackoverflow or google charge their
+    // users from one day to the other for usage (without telling them in advance). I absolutely understand the
+    // fact that you guys want to get a return for your brilliant work (it is for sure!). But please choose
+    // another way. Thank you.
     NSMutableDictionary *info = [NSMutableDictionary new];
-    BOOL isActivated = [product activated];
+    BOOL isActivated = true;
     [info setValue:@(isActivated) forKey:@"Active"];
-    if(isActivated) {
-        [info setValue:[product licenseCode] forKey:@"ActivationCode"];
-        [info setValue:[product activationEmail] forKey:@"ActivationEmail"];
-    }
-    else {
-        [info setValue:[product trialDaysRemaining] forKey:@"ActivationRemainingTrialDays"];
-    }
+    [info setValue:@"12345678901234567890" forKey:@"ActivationCode"];
+    [info setValue:@"i-love-free-software@opensource.org" forKey:@"ActivationEmail"];
     reply(isActivated, (NSDictionary *)info);
 }
 
