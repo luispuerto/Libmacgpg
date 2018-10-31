@@ -45,14 +45,15 @@ make
 
 #### Backup existing XPC component
 ```bash
-launchctl unload /Library/LaunchAgents/org.gpgtools.Libmacgpg.xpc.plist
-sudo mv /Library/Application\ Support/GPGTools/org.gpgtools.Libmacgpg.xpc /Library/Application\ Support/GPGTools/org.gpgtools.Libmacgpg.xpc.bak
+$ launchctl unload /Library/LaunchAgents/org.gpgtools.Libmacgpg.xpc.plist
+$ sudo mv /Library/Application\ Support/GPGTools/org.gpgtools.Libmacgpg.xpc /Library/Application\ Support/GPGTools/org.gpgtools.Libmacgpg.xpc.bak
 ```
 
 #### Copy your fresh compiled XPC component to its destination
+
 ```bash
-sudo cp -a build/Release/org.gpgtools.Libmacgpg.xpc /Library/Application\ Support/GPGTools/
-launchctl load -w /Library/LaunchAgents/org.gpgtools.Libmacgpg.xpc.plist
+$ sudo cp -a build/Release/org.gpgtools.Libmacgpg.xpc /Library/Application\ Support/GPGTools/
+$ launchctl load -w /Library/LaunchAgents/org.gpgtools.Libmacgpg.xpc.plist
 ```
 
 Now you can use your GPGtools Plugin 2018.4 without any restrictions.
