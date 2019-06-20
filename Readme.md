@@ -43,7 +43,20 @@ cd Libmacgpg
 make
 ```
 
+In case of: 
+
+```shell
+xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance
+```
+
+You do this, from [here](https://stackoverflow.com/a/17980786/6888648). 
+
+```shell
+$ sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+```
+
 #### Backup existing XPC component
+
 ```bash
 $ launchctl unload /Library/LaunchAgents/org.gpgtools.Libmacgpg.xpc.plist
 $ sudo mv /Library/Application\ Support/GPGTools/org.gpgtools.Libmacgpg.xpc /Library/Application\ Support/GPGTools/org.gpgtools.Libmacgpg.xpc.bak
